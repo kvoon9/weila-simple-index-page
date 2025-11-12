@@ -9,6 +9,8 @@ const JumpPage = () => {
     { name: 'YouTube', url: 'https://youtube.com' },
     { name: 'Stack Overflow', url: 'https://stackoverflow.com' },
     { name: 'Local 3000 Port', url: 'http://192.168.0.121:3000' },
+    { name: 'Local 3333 Port', url: 'http://192.168.0.121:3333' },
+    { name: 'Local 5173 Port', url: 'http://192.168.0.121:5173' },
   ];
 
   return (
