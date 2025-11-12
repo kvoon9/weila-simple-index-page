@@ -147,7 +147,7 @@ const JumpPage = () => {
             <ul class="link-list">
               {quickLinks.map((link, index) => (
                 <li key={index} class="link-item">
-                  <a href="{link.url}" target="_blank" rel="noopener noreferrer">
+                  <a href={link.url} target="_blank" rel="noopener noreferrer">
                     {link.name}
                   </a>
                 </li>
