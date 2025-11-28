@@ -1,0 +1,39 @@
+{
+  "name": "weila-simple-index-page",
+  "version": "1.0.0",
+  "description": "A simple HTML page for URL query management and device information",
+  "type": "module",
+  "scripts": {
+    "dev": "bun --hot index.html",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "prepare": "simple-git-hooks"
+  },
+  "devDependencies": {
+    "prettier": "^3.0.0",
+    "simple-git-hooks": "^2.9.0"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "bun run format"
+  },
+  "prettier": {
+    "printWidth": 100,
+    "tabWidth": 2,
+    "useTabs": false,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "es5",
+    "bracketSpacing": true,
+    "bracketSameLine": false,
+    "arrowParens": "avoid",
+    "endOfLine": "lf",
+    "overrides": [
+      {
+        "files": "*.html",
+        "options": {
+          "parser": "html"
+        }
+      }
+    ]
+  }
+}
