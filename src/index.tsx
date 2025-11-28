@@ -2,16 +2,13 @@ import { Hono } from 'hono'
 
 const app = new Hono()
 
+const hostname = '192.168.0.116'
+
 const JumpPage = () => {
-  const quickLinks = [
-    { name: 'Google', url: 'https://google.com' },
-    { name: 'GitHub', url: 'https://github.com' },
-    { name: 'YouTube', url: 'https://youtube.com' },
-    { name: 'Stack Overflow', url: 'https://stackoverflow.com' },
-    { name: 'Local 3000 Port', url: 'http://192.168.0.121:3000' },
-    { name: 'Local 3333 Port', url: 'http://192.168.0.121:3333' },
-    { name: 'Local 5173 Port', url: 'http://192.168.0.121:5173' },
-  ];
+  const quickLinks = ['3000', '3333', '5173'].map((port) => ({
+    name: port,
+    url: `http://${hostname}:${port}`,
+  }))
 
   return (
     <html>
@@ -192,7 +189,6 @@ app.get('/', (c) => {
 
 import { serve } from '@hono/node-server'
 
-const hostname = '192.168.0.121'
 const port = 3021
 
 console.log(`Server running at http://${hostname}:${port}`)
