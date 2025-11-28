@@ -256,32 +256,32 @@
 
     <script>
       // Global variables
-      let queryParams = new Map();
+      let queryParams = new Map()
 
       // Initialize on page load
       document.addEventListener('DOMContentLoaded', function () {
-        parseCurrentQueryParams();
-        renderQueryTable();
-      });
+        parseCurrentQueryParams()
+        renderQueryTable()
+      })
 
       // Parse current URL query parameters
       function parseCurrentQueryParams() {
-        const urlParams = new URLSearchParams(window.location.search);
-        queryParams.clear();
+        const urlParams = new URLSearchParams(window.location.search)
+        queryParams.clear()
 
         for (const [key, value] of urlParams) {
-          queryParams.set(key, value);
+          queryParams.set(key, value)
         }
       }
 
       // Render query parameters table
       function renderQueryTable() {
-        const tableBody = document.getElementById('queryTableBody');
+        const tableBody = document.getElementById('queryTableBody')
 
         if (queryParams.size === 0) {
           tableBody.innerHTML =
-            '<tr><td colspan="3" style="text-align: center;">No query parameters</td></tr>';
-          return;
+            '<tr><td colspan="3" style="text-align: center;">No query parameters</td></tr>'
+          return
         }
 
         tableBody.innerHTML = Array.from(queryParams.entries())
@@ -297,130 +297,130 @@
                         </div>
                     </td>
                 </tr>
-            `
+            `,
           )
-          .join('');
+          .join('')
       }
 
       // Add new query parameter
       function addQueryParam() {
-        const keyInput = document.getElementById('queryKeyInput');
-        const valueInput = document.getElementById('queryValueInput');
+        const keyInput = document.getElementById('queryKeyInput')
+        const valueInput = document.getElementById('queryValueInput')
 
-        const key = keyInput.value.trim();
-        const value = valueInput.value.trim();
+        const key = keyInput.value.trim()
+        const value = valueInput.value.trim()
 
         if (!key) {
-          alert('Please enter a parameter key');
-          return;
+          alert('Please enter a parameter key')
+          return
         }
 
-        queryParams.set(key, value);
-        keyInput.value = '';
-        valueInput.value = '';
-        renderQueryTable();
+        queryParams.set(key, value)
+        keyInput.value = ''
+        valueInput.value = ''
+        renderQueryTable()
       }
 
       // Edit query parameter
       function editQueryParam(index) {
-        const entries = Array.from(queryParams.entries());
-        const [key, value] = entries[index];
+        const entries = Array.from(queryParams.entries())
+        const [key, value] = entries[index]
 
-        const newKey = prompt('Edit parameter key:', key);
-        if (newKey === null) return;
+        const newKey = prompt('Edit parameter key:', key)
+        if (newKey === null) return
 
-        const newValue = prompt('Edit parameter value:', value);
-        if (newValue === null) return;
+        const newValue = prompt('Edit parameter value:', value)
+        if (newValue === null) return
 
         // Remove old entry and add new one
-        queryParams.delete(key);
-        queryParams.set(newKey.trim(), newValue.trim());
-        renderQueryTable();
+        queryParams.delete(key)
+        queryParams.set(newKey.trim(), newValue.trim())
+        renderQueryTable()
       }
 
       // Delete query parameter
       function deleteQueryParam(index) {
-        const entries = Array.from(queryParams.entries());
-        const [key] = entries[index];
+        const entries = Array.from(queryParams.entries())
+        const [key] = entries[index]
 
         if (confirm(`Delete parameter "${key}"?`)) {
-          queryParams.delete(key);
-          renderQueryTable();
+          queryParams.delete(key)
+          renderQueryTable()
         }
       }
 
       // Unified jump function that checks withQuery checkbox
       function jumpToWebsite() {
-        const url = document.getElementById('urlInput').value;
-        const withQuery = document.getElementById('withQueryCheckbox').checked;
+        const url = document.getElementById('urlInput').value
+        const withQuery = document.getElementById('withQueryCheckbox').checked
 
         if (!url) {
-          alert('Please enter a URL');
-          return;
+          alert('Please enter a URL')
+          return
         }
 
         // Format URL
-        let formattedUrl = url;
+        let formattedUrl = url
         if (!url.startsWith('http://') && !url.startsWith('https://')) {
-          formattedUrl = 'https://' + url;
+          formattedUrl = 'https://' + url
         }
 
         // Add query parameters if withQuery is checked
         if (withQuery && queryParams.size > 0) {
-          const urlObj = new URL(formattedUrl);
+          const urlObj = new URL(formattedUrl)
           queryParams.forEach((value, key) => {
-            urlObj.searchParams.set(key, value);
-          });
-          formattedUrl = urlObj.toString();
+            urlObj.searchParams.set(key, value)
+          })
+          formattedUrl = urlObj.toString()
         }
 
-        window.location.href = formattedUrl;
+        window.location.href = formattedUrl
       }
 
       // Jump to quick link with query parameters if enabled
       function jumpToQuickLink(url) {
-        const withQuery = document.getElementById('withQueryCheckbox').checked;
-        let formattedUrl = url;
+        const withQuery = document.getElementById('withQueryCheckbox').checked
+        let formattedUrl = url
 
         // Add query parameters if withQuery is checked
         if (withQuery && queryParams.size > 0) {
-          const urlObj = new URL(url);
+          const urlObj = new URL(url)
           queryParams.forEach((value, key) => {
-            urlObj.searchParams.set(key, value);
-          });
-          formattedUrl = urlObj.toString();
+            urlObj.searchParams.set(key, value)
+          })
+          formattedUrl = urlObj.toString()
         }
 
-        window.location.href = formattedUrl;
+        window.location.href = formattedUrl
       }
 
       // Utility function to escape HTML
       function escapeHtml(text) {
-        const div = document.createElement('div');
-        div.textContent = text;
-        return div.innerHTML;
+        const div = document.createElement('div')
+        div.textContent = text
+        return div.innerHTML
       }
 
       // Allow Enter key to trigger the jump
       document.getElementById('urlInput').addEventListener('keypress', function (event) {
         if (event.key === 'Enter') {
-          jumpToWebsite();
+          jumpToWebsite()
         }
-      });
+      })
 
       // Allow Enter key in query key input to add parameter
       document.getElementById('queryKeyInput').addEventListener('keypress', function (event) {
         if (event.key === 'Enter') {
-          document.getElementById('queryValueInput').focus();
+          document.getElementById('queryValueInput').focus()
         }
-      });
+      })
 
       // Allow Enter key in query value input to add parameter
       document.getElementById('queryValueInput').addEventListener('keypress', function (event) {
         if (event.key === 'Enter') {
-          addQueryParam();
+          addQueryParam()
         }
-      });
+      })
     </script>
   </body>
 </html>
