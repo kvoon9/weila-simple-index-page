@@ -185,13 +185,18 @@
         letter-spacing: 0.5px;
       }
 
-      .query-table {
+      .query-table-wrapper {
         width: 100%;
-        border-collapse: collapse;
+        overflow-x: auto;
         margin-bottom: 1rem;
         border: 1px solid #e5e5e5;
         border-radius: 8px;
-        overflow: hidden;
+      }
+
+      .query-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 0;
       }
 
       .query-table th,
@@ -199,6 +204,7 @@
         padding: 12px;
         text-align: left;
         border-bottom: 1px solid #e5e5e5;
+        white-space: nowrap;
       }
 
       .query-table th {
@@ -305,6 +311,21 @@
         .add-query-form button {
           width: 100%;
         }
+
+        .query-table-wrapper {
+          -webkit-overflow-scrolling: touch;
+        }
+
+        .query-table th,
+        .query-table td {
+          padding: 8px;
+          font-size: 0.75rem;
+        }
+
+        .query-actions button {
+          padding: 6px 10px;
+          font-size: 11px;
+        }
       }
     </style>
   </head>
@@ -363,20 +384,22 @@
         </div>
 
         <!-- Query Parameters Table -->
-        <table class="query-table">
-          <thead>
-            <tr>
-              <th>Key</th>
-              <th>Value</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody id="queryTableBody">
-            <tr>
-              <td colspan="3" style="text-align: center">No query parameters</td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="query-table-wrapper">
+          <table class="query-table">
+            <thead>
+              <tr>
+                <th>Key</th>
+                <th>Value</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="queryTableBody">
+              <tr>
+                <td colspan="3" style="text-align: center">No query parameters</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
 
