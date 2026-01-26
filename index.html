@@ -361,13 +361,18 @@
         <h3>Quick Links</h3>
         <ul class="link-list">
           <li class="link-item">
-            <a href="#" onclick="jumpToQuickLink('http://192.168.1.16:3000')">3000</a>
+            <a href="#" onclick="jumpToQuickLink('http://192.168.1.50:3000')">3000</a>
           </li>
           <li class="link-item">
-            <a href="#" onclick="jumpToQuickLink('http://192.168.1.16:3333')">3333</a>
+            <a href="#" onclick="jumpToQuickLink('http://192.168.1.50:3333')">3333</a>
           </li>
           <li class="link-item">
-            <a href="#" onclick="jumpToQuickLink('http://192.168.1.16:5173')">5173</a>
+            <a href="#" onclick="jumpToQuickLink('http://192.168.1.50:5173')">5173</a>
+          </li>
+          <li class="link-item">
+            <a href="#" onclick="jumpToQuickLink('https://voiswork.com/corp_mobile/')"
+              >VoisWork Webview Intl</a
+            >
           </li>
         </ul>
       </div>
@@ -531,11 +536,10 @@
         }
 
         // Handle hash URL mode
-        if (useHash) {
-          const path = urlObj.pathname + urlObj.search
+        if (useHash && urlObj.search) {
+          // Move query params to hash, keep pathname intact
+          urlObj.hash = '/' + urlObj.search
           urlObj.search = ''
-          urlObj.pathname = '/'
-          urlObj.hash = path
         }
 
         window.location.href = urlObj.toString()
@@ -562,11 +566,10 @@
         }
 
         // Handle hash URL mode
-        if (useHash) {
-          const path = urlObj.pathname + urlObj.search
+        if (useHash && urlObj.search) {
+          // Move query params to hash, keep pathname intact
+          urlObj.hash = '/' + urlObj.search
           urlObj.search = ''
-          urlObj.pathname = '/'
-          urlObj.hash = path
         }
 
         window.location.href = urlObj.toString()
