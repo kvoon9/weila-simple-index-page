@@ -10,9 +10,7 @@
       }
 
       body {
-        font-family:
-          -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell',
-          sans-serif;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -33,42 +31,28 @@
 
       h1 {
         margin: 0 0 0.25rem 0;
-        color: #000;
         font-size: 1.75rem;
         font-weight: 600;
-        letter-spacing: -0.5px;
       }
 
       .subtitle {
         color: #737373;
         font-size: 0.875rem;
         margin-bottom: 2rem;
-        font-weight: 400;
       }
 
       input[type='text'] {
         width: 100%;
         padding: 12px 14px;
-        margin: 0;
         border: 1px solid #e5e5e5;
         border-radius: 8px;
         font-size: 15px;
-        transition: all 0.15s ease;
         background: white;
-        color: #000;
-      }
-
-      input[type='text']:hover {
-        border-color: #d4d4d4;
       }
 
       input[type='text']:focus {
         outline: none;
         border-color: #000;
-      }
-
-      input[type='text']::placeholder {
-        color: #a3a3a3;
       }
 
       .checkbox-group {
@@ -84,12 +68,6 @@
         font-size: 14px;
         color: #525252;
         cursor: pointer;
-        user-select: none;
-        transition: color 0.15s ease;
-      }
-
-      .checkbox-label:hover {
-        color: #000;
       }
 
       input[type='checkbox'] {
@@ -109,30 +87,25 @@
         font-size: 15px;
         font-weight: 500;
         cursor: pointer;
-        transition: all 0.15s ease;
       }
 
       button:hover {
         background: #262626;
       }
 
-      button:active {
-        transform: scale(0.98);
-      }
-
-      .quick-links {
+      .quick-links,
+      .query-section {
         margin-top: 2rem;
         padding-top: 2rem;
         border-top: 1px solid #e5e5e5;
       }
 
-      .quick-links h3 {
+      .quick-links h3,
+      .query-section h3 {
         margin: 0 0 1rem 0;
         color: #737373;
         font-size: 0.75rem;
-        font-weight: 500;
         text-transform: uppercase;
-        letter-spacing: 0.5px;
       }
 
       .link-list {
@@ -142,10 +115,6 @@
         display: flex;
         flex-direction: column;
         gap: 4px;
-      }
-
-      .link-item {
-        margin: 0;
       }
 
       .link-item a {
@@ -161,41 +130,31 @@
       }
 
       .url-preview {
-        display: block;
         font-size: 11px;
         color: #a3a3a3;
         margin-top: 2px;
         word-break: break-all;
       }
 
-      /* Query parameter management styles */
-      .query-section {
-        margin-top: 2rem;
-        padding-top: 2rem;
-        border-top: 1px solid #e5e5e5;
-      }
-
-      .query-section h3 {
-        margin: 0 0 1rem 0;
-        color: #737373;
-        font-size: 0.75rem;
-        font-weight: 500;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-      }
-
-      .query-table-wrapper {
-        width: 100%;
-        overflow-x: auto;
+      .add-query-form {
+        display: flex;
+        gap: 8px;
         margin-bottom: 1rem;
-        border: 1px solid #e5e5e5;
-        border-radius: 8px;
+      }
+
+      .add-query-form input {
+        flex: 1;
+      }
+
+      .add-query-form button {
+        width: auto;
       }
 
       .query-table {
         width: 100%;
         border-collapse: collapse;
-        margin-bottom: 0;
+        border: 1px solid #e5e5e5;
+        border-radius: 8px;
       }
 
       .query-table th,
@@ -203,21 +162,12 @@
         padding: 12px;
         text-align: left;
         border-bottom: 1px solid #e5e5e5;
-        white-space: nowrap;
       }
 
       .query-table th {
         background: #fafafa;
-        font-weight: 500;
-        color: #525252;
         font-size: 0.8125rem;
-        text-transform: uppercase;
-        letter-spacing: 0.3px;
-      }
-
-      .query-table td {
         color: #525252;
-        font-size: 0.875rem;
       }
 
       .query-table tbody tr:last-child td {
@@ -233,99 +183,20 @@
         width: auto;
         padding: 6px 12px;
         font-size: 12px;
-        font-weight: 500;
       }
 
-      .add-query-form {
-        display: flex;
-        gap: 8px;
-        margin-bottom: 1.5rem;
-      }
-
-      .add-query-form input {
-        flex: 1;
-        margin: 0;
-        font-size: 14px;
-        padding: 10px 12px;
-      }
-
-      .add-query-form button {
-        width: auto;
-        margin: 0;
-        padding: 10px 16px;
-        font-size: 14px;
-      }
-
-      /* Mobile responsive styles */
       @media (max-width: 480px) {
         body {
           padding: 10px;
         }
-
         .container {
           padding: 2rem 1.5rem;
         }
-
-        h1 {
-          font-size: 1.5rem;
-        }
-
-        .subtitle {
-          font-size: 0.8125rem;
-          margin-bottom: 1.5rem;
-        }
-
-        input[type='text'] {
-          font-size: 14px;
-          padding: 11px 12px;
-        }
-
-        button {
-          font-size: 14px;
-          padding: 11px 18px;
-        }
-
-        .checkbox-group {
-          gap: 16px;
-        }
-
-        .checkbox-label {
-          font-size: 13px;
-        }
-
-        .link-list {
-          gap: 6px;
-        }
-
-        .link-item a {
-          font-size: 13px;
-        }
-
-        .url-preview {
-          font-size: 10px;
-        }
-
         .add-query-form {
           flex-direction: column;
         }
-
         .add-query-form button {
           width: 100%;
-        }
-
-        .query-table-wrapper {
-          -webkit-overflow-scrolling: touch;
-        }
-
-        .query-table th,
-        .query-table td {
-          padding: 8px;
-          font-size: 0.75rem;
-        }
-
-        .query-actions button {
-          padding: 6px 10px;
-          font-size: 11px;
         }
       }
     </style>
@@ -335,324 +206,189 @@
     <div class="container">
       <h1>Jump to Website</h1>
       <p class="subtitle">Navigate quickly to your development servers</p>
-      <input
-        type="text"
-        id="urlInput"
-        placeholder="Enter website URL (e.g., https://example.com)"
-      />
+
+      <input type="text" id="urlInput" placeholder="Enter website URL" />
 
       <div class="checkbox-group">
         <label class="checkbox-label">
           <input type="checkbox" id="withQueryCheckbox" checked />
-          <span>With query params</span>
+          Query params
         </label>
         <label class="checkbox-label">
           <input type="checkbox" id="withDebugCheckbox" checked />
-          <span>With debug</span>
+          Debug
         </label>
         <label class="checkbox-label">
           <input type="checkbox" id="useHashCheckbox" checked />
-          <span>Use hash URL</span>
+          Hash URL
         </label>
       </div>
 
-      <button onclick="jumpToWebsite()">Go</button>
+      <button onclick="jumpTo(urlInput.value)">Go</button>
 
       <div class="quick-links">
         <h3>Quick Links</h3>
         <ul class="link-list">
           <li class="link-item">
-            <a href="#" onclick="jumpToQuickLink('http://192.168.1.50:3000')">3000</a>
-            <span class="url-preview" data-base-url="http://192.168.1.50:3000"></span>
+            <a href="#" onclick="jumpTo('http://192.168.1.50:3000')">3000</a>
+            <span class="url-preview" data-url="http://192.168.1.50:3000"></span>
           </li>
           <li class="link-item">
-            <a href="#" onclick="jumpToQuickLink('http://192.168.1.50:3333')">3333</a>
-            <span class="url-preview" data-base-url="http://192.168.1.50:3333"></span>
+            <a href="#" onclick="jumpTo('http://192.168.1.50:3333')">3333</a>
+            <span class="url-preview" data-url="http://192.168.1.50:3333"></span>
           </li>
           <li class="link-item">
-            <a href="#" onclick="jumpToQuickLink('http://192.168.1.50:5173')">5173</a>
-            <span class="url-preview" data-base-url="http://192.168.1.50:5173"></span>
+            <a href="#" onclick="jumpTo('http://192.168.1.50:5173')">5173</a>
+            <span class="url-preview" data-url="http://192.168.1.50:5173"></span>
           </li>
           <li class="link-item">
-            <a href="#" onclick="jumpToQuickLink('https://voiswork.com/corp_mobile/')"
-              >VoisWork Webview Intl</a
-            >
-            <span class="url-preview" data-base-url="https://voiswork.com/corp_mobile/"></span>
+            <a href="#" onclick="jumpTo('https://voiswork.com/corp_mobile/')">VoisWork</a>
+            <span class="url-preview" data-url="https://voiswork.com/corp_mobile/"></span>
           </li>
         </ul>
       </div>
 
-      <!-- Query Parameter Management Section -->
       <div class="query-section">
         <h3>Query Parameters</h3>
 
-        <!-- Add Query Form -->
         <div class="add-query-form">
-          <input type="text" id="queryKeyInput" placeholder="Parameter key" />
-          <input type="text" id="queryValueInput" placeholder="Parameter value" />
+          <input type="text" id="queryKeyInput" placeholder="Key" />
+          <input type="text" id="queryValueInput" placeholder="Value" />
           <button onclick="addQueryParam()">Add</button>
         </div>
 
-        <!-- Query Parameters Table -->
-        <div class="query-table-wrapper">
-          <table class="query-table">
-            <thead>
-              <tr>
-                <th>Key</th>
-                <th>Value</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody id="queryTableBody">
-              <tr>
-                <td colspan="3" style="text-align: center">No query parameters</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        <table class="query-table">
+          <thead>
+            <tr>
+              <th>Key</th>
+              <th>Value</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="queryTableBody">
+            <tr>
+              <td colspan="3" style="text-align: center">No parameters</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
 
     <script>
-      // Global variables
       let queryParams = new Map()
 
-      // Initialize on page load
-      document.addEventListener('DOMContentLoaded', function () {
-        parseCurrentQueryParams()
-        renderQueryTable()
-        updateUrlPreviews()
-      })
+      const $ = id => document.getElementById(id)
 
-      // Update URL previews on checkbox changes
-      document.getElementById('withQueryCheckbox').addEventListener('change', updateUrlPreviews)
-      document.getElementById('withDebugCheckbox').addEventListener('change', updateUrlPreviews)
-      document.getElementById('useHashCheckbox').addEventListener('change', updateUrlPreviews)
+      // Single function to build URL with params
+      function buildUrl(url) {
+        if (!url.startsWith('http')) url = 'https://' + url
+        const urlObj = new URL(url)
 
-      // Update URL previews function
-      function updateUrlPreviews() {
-        const withQuery = document.getElementById('withQueryCheckbox').checked
-        const withDebug = document.getElementById('withDebugCheckbox').checked
-        const useHash = document.getElementById('useHashCheckbox').checked
-
-        const previews = document.querySelectorAll('.url-preview')
-        previews.forEach(function (preview) {
-          const baseUrl = preview.getAttribute('data-base-url')
-          preview.textContent = generatePreviewUrl(baseUrl, withQuery, withDebug, useHash)
-        })
-      }
-
-      // Generate preview URL with applied params
-      function generatePreviewUrl(baseUrl, withQuery, withDebug, useHash) {
-        const urlObj = new URL(baseUrl)
-
-        // Add query parameters if withQuery is checked
-        if (withQuery && queryParams.size > 0) {
-          queryParams.forEach(function (value, key) {
-            urlObj.searchParams.set(key, value)
-          })
+        if ($('withQueryCheckbox').checked && queryParams.size) {
+          queryParams.forEach((v, k) => urlObj.searchParams.set(k, v))
         }
-
-        // Add debug parameter if withDebug is checked
-        if (withDebug) {
+        if ($('withDebugCheckbox').checked) {
           urlObj.searchParams.set('debug', 'true')
         }
-
-        // Handle hash URL mode
-        if (useHash && urlObj.search) {
+        if ($('useHashCheckbox').checked && urlObj.search) {
           urlObj.hash = '/' + urlObj.search
           urlObj.search = ''
         }
-
         return urlObj.toString()
       }
 
-      // Parse current URL query parameters
-      function parseCurrentQueryParams() {
-        const urlParams = new URLSearchParams(window.location.search)
-        queryParams.clear()
-
-        for (const [key, value] of urlParams) {
-          queryParams.set(key, value)
-        }
+      // Jump to URL
+      function jumpTo(url) {
+        if (!url) return alert('Enter a URL')
+        window.location.href = buildUrl(url)
       }
 
-      // Render query parameters table
-      function renderQueryTable() {
-        const tableBody = document.getElementById('queryTableBody')
+      // Update previews
+      function updatePreviews() {
+        document.querySelectorAll('.url-preview').forEach(el => {
+          el.textContent = buildUrl(el.dataset.url)
+        })
+      }
 
-        if (queryParams.size === 0) {
-          tableBody.innerHTML =
-            '<tr><td colspan="3" style="text-align: center;">No query parameters</td></tr>'
+      // Render table
+      function renderTable() {
+        const tbody = $('queryTableBody')
+        if (!queryParams.size) {
+          tbody.innerHTML = '<tr><td colspan="3" style="text-align:center">No parameters</td></tr>'
           return
         }
-
-        tableBody.innerHTML = Array.from(queryParams.entries())
+        tbody.innerHTML = Array.from(queryParams.entries())
           .map(
-            ([key, value], index) => `
-                <tr>
-                    <td>${escapeHtml(key)}</td>
-                    <td>${escapeHtml(value)}</td>
-                    <td>
-                        <div class="query-actions">
-                            <button onclick="editQueryParam(${index})">Edit</button>
-                            <button onclick="deleteQueryParam(${index})">Delete</button>
-                        </div>
-                    </td>
-                </tr>
-            `,
+            ([k, v], i) => `
+            <tr>
+              <td>${escapeHtml(k)}</td>
+              <td>${escapeHtml(v)}</td>
+              <td class="query-actions">
+                <button onclick="editParam(${i})">Edit</button>
+                <button onclick="deleteParam(${i})">Delete</button>
+              </td>
+            </tr>`,
           )
           .join('')
       }
 
-      // Add new query parameter
       function addQueryParam() {
-        const keyInput = document.getElementById('queryKeyInput')
-        const valueInput = document.getElementById('queryValueInput')
-
-        const key = keyInput.value.trim()
-        const value = valueInput.value.trim()
-
-        if (!key) {
-          alert('Please enter a parameter key')
-          return
-        }
-
+        const key = $('queryKeyInput').value.trim()
+        const value = $('queryValueInput').value.trim()
+        if (!key) return alert('Enter a key')
         queryParams.set(key, value)
-        keyInput.value = ''
-        valueInput.value = ''
-        renderQueryTable()
-        updateUrlPreviews()
+        $('queryKeyInput').value = ''
+        $('queryValueInput').value = ''
+        renderTable()
+        updatePreviews()
       }
 
-      // Edit query parameter
-      function editQueryParam(index) {
-        const entries = Array.from(queryParams.entries())
-        const [key, value] = entries[index]
-
-        const newKey = prompt('Edit parameter key:', key)
+      function editParam(i) {
+        const [key, value] = Array.from(queryParams.entries())[i]
+        const newKey = prompt('Key:', key)
         if (newKey === null) return
-
-        const newValue = prompt('Edit parameter value:', value)
+        const newValue = prompt('Value:', value)
         if (newValue === null) return
-
-        // Remove old entry and add new one
         queryParams.delete(key)
         queryParams.set(newKey.trim(), newValue.trim())
-        renderQueryTable()
-        updateUrlPreviews()
+        renderTable()
+        updatePreviews()
       }
 
-      // Delete query parameter
-      function deleteQueryParam(index) {
-        const entries = Array.from(queryParams.entries())
-        const [key] = entries[index]
-
-        if (confirm(`Delete parameter "${key}"?`)) {
+      function deleteParam(i) {
+        const [key] = Array.from(queryParams.entries())[i]
+        if (confirm(`Delete "${key}"?`)) {
           queryParams.delete(key)
-          renderQueryTable()
-          updateUrlPreviews()
+          renderTable()
+          updatePreviews()
         }
       }
 
-      // Unified jump function that checks withQuery and withDebug checkboxes
-      function jumpToWebsite() {
-        const url = document.getElementById('urlInput').value
-        const withQuery = document.getElementById('withQueryCheckbox').checked
-        const withDebug = document.getElementById('withDebugCheckbox').checked
-        const useHash = document.getElementById('useHashCheckbox').checked
-
-        if (!url) {
-          alert('Please enter a URL')
-          return
-        }
-
-        // Format URL
-        let formattedUrl = url
-        if (!url.startsWith('http://') && !url.startsWith('https://')) {
-          formattedUrl = 'https://' + url
-        }
-
-        const urlObj = new URL(formattedUrl)
-
-        // Add query parameters if withQuery is checked
-        if (withQuery && queryParams.size > 0) {
-          queryParams.forEach((value, key) => {
-            urlObj.searchParams.set(key, value)
-          })
-        }
-
-        // Add debug parameter if withDebug is checked
-        if (withDebug) {
-          urlObj.searchParams.set('debug', 'true')
-        }
-
-        // Handle hash URL mode
-        if (useHash && urlObj.search) {
-          // Move query params to hash, keep pathname intact
-          urlObj.hash = '/' + urlObj.search
-          urlObj.search = ''
-        }
-
-        window.location.href = urlObj.toString()
-      }
-
-      // Jump to quick link with query parameters and debug if enabled
-      function jumpToQuickLink(url) {
-        const withQuery = document.getElementById('withQueryCheckbox').checked
-        const withDebug = document.getElementById('withDebugCheckbox').checked
-        const useHash = document.getElementById('useHashCheckbox').checked
-
-        const urlObj = new URL(url)
-
-        // Add query parameters if withQuery is checked
-        if (withQuery && queryParams.size > 0) {
-          queryParams.forEach((value, key) => {
-            urlObj.searchParams.set(key, value)
-          })
-        }
-
-        // Add debug parameter if withDebug is checked
-        if (withDebug) {
-          urlObj.searchParams.set('debug', 'true')
-        }
-
-        // Handle hash URL mode
-        if (useHash && urlObj.search) {
-          // Move query params to hash, keep pathname intact
-          urlObj.hash = '/' + urlObj.search
-          urlObj.search = ''
-        }
-
-        window.location.href = urlObj.toString()
-      }
-
-      // Utility function to escape HTML
       function escapeHtml(text) {
         const div = document.createElement('div')
         div.textContent = text
         return div.innerHTML
       }
 
-      // Allow Enter key to trigger the jump
-      document.getElementById('urlInput').addEventListener('keypress', function (event) {
-        if (event.key === 'Enter') {
-          jumpToWebsite()
-        }
-      })
+      // Init
+      document.addEventListener('DOMContentLoaded', () => {
+        new URLSearchParams(window.location.search).forEach((v, k) => queryParams.set(k, v))
+        renderTable()
+        updatePreviews()
 
-      // Allow Enter key in query key input to add parameter
-      document.getElementById('queryKeyInput').addEventListener('keypress', function (event) {
-        if (event.key === 'Enter') {
-          document.getElementById('queryValueInput').focus()
-        }
-      })
+        $('withQueryCheckbox').addEventListener('change', updatePreviews)
+        $('withDebugCheckbox').addEventListener('change', updatePreviews)
+        $('useHashCheckbox').addEventListener('change', updatePreviews)
 
-      // Allow Enter key in query value input to add parameter
-      document.getElementById('queryValueInput').addEventListener('keypress', function (event) {
-        if (event.key === 'Enter') {
-          addQueryParam()
-        }
+        $('urlInput').addEventListener('keypress', e => {
+          if (e.key === 'Enter') jumpTo(e.target.value)
+        })
+        $('queryKeyInput').addEventListener('keypress', e => {
+          if (e.key === 'Enter') $('queryValueInput').focus()
+        })
+        $('queryValueInput').addEventListener('keypress', e => {
+          if (e.key === 'Enter') addQueryParam()
+        })
       })
     </script>
   </body>
