@@ -139,9 +139,9 @@
         list-style: none;
         padding: 0;
         margin: 0;
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 8px;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
       }
 
       .link-item {
@@ -149,24 +149,23 @@
       }
 
       .link-item a {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 12px;
-        background: white;
         color: #525252;
         text-decoration: none;
-        border-radius: 8px;
-        font-size: 15px;
+        font-size: 14px;
         font-weight: 500;
-        transition: all 0.15s ease;
-        border: 1px solid #e5e5e5;
       }
 
       .link-item a:hover {
-        background: #000;
-        color: white;
-        border-color: #000;
+        color: #000;
+        text-decoration: underline;
+      }
+
+      .url-preview {
+        display: block;
+        font-size: 11px;
+        color: #a3a3a3;
+        margin-top: 2px;
+        word-break: break-all;
       }
 
       /* Query parameter management styles */
@@ -295,13 +294,15 @@
         }
 
         .link-list {
-          grid-template-columns: repeat(3, 1fr);
           gap: 6px;
         }
 
         .link-item a {
-          font-size: 14px;
-          padding: 10px 8px;
+          font-size: 13px;
+        }
+
+        .url-preview {
+          font-size: 10px;
         }
 
         .add-query-form {
@@ -362,17 +363,21 @@
         <ul class="link-list">
           <li class="link-item">
             <a href="#" onclick="jumpToQuickLink('http://192.168.1.50:3000')">3000</a>
+            <span class="url-preview" data-base-url="http://192.168.1.50:3000"></span>
           </li>
           <li class="link-item">
             <a href="#" onclick="jumpToQuickLink('http://192.168.1.50:3333')">3333</a>
+            <span class="url-preview" data-base-url="http://192.168.1.50:3333"></span>
           </li>
           <li class="link-item">
             <a href="#" onclick="jumpToQuickLink('http://192.168.1.50:5173')">5173</a>
+            <span class="url-preview" data-base-url="http://192.168.1.50:5173"></span>
           </li>
           <li class="link-item">
             <a href="#" onclick="jumpToQuickLink('https://voiswork.com/corp_mobile/')"
               >VoisWork Webview Intl</a
             >
+            <span class="url-preview" data-base-url="https://voiswork.com/corp_mobile/"></span>
           </li>
         </ul>
       </div>
@@ -416,7 +421,51 @@
       document.addEventListener('DOMContentLoaded', function () {
         parseCurrentQueryParams()
         renderQueryTable()
+        updateUrlPreviews()
       })
+
+      // Update URL previews on checkbox changes
+      document.getElementById('withQueryCheckbox').addEventListener('change', updateUrlPreviews)
+      document.getElementById('withDebugCheckbox').addEventListener('change', updateUrlPreviews)
+      document.getElementById('useHashCheckbox').addEventListener('change', updateUrlPreviews)
+
+      // Update URL previews function
+      function updateUrlPreviews() {
+        const withQuery = document.getElementById('withQueryCheckbox').checked
+        const withDebug = document.getElementById('withDebugCheckbox').checked
+        const useHash = document.getElementById('useHashCheckbox').checked
+
+        const previews = document.querySelectorAll('.url-preview')
+        previews.forEach(function (preview) {
+          const baseUrl = preview.getAttribute('data-base-url')
+          preview.textContent = generatePreviewUrl(baseUrl, withQuery, withDebug, useHash)
+        })
+      }
+
+      // Generate preview URL with applied params
+      function generatePreviewUrl(baseUrl, withQuery, withDebug, useHash) {
+        const urlObj = new URL(baseUrl)
+
+        // Add query parameters if withQuery is checked
+        if (withQuery && queryParams.size > 0) {
+          queryParams.forEach(function (value, key) {
+            urlObj.searchParams.set(key, value)
+          })
+        }
+
+        // Add debug parameter if withDebug is checked
+        if (withDebug) {
+          urlObj.searchParams.set('debug', 'true')
+        }
+
+        // Handle hash URL mode
+        if (useHash && urlObj.search) {
+          urlObj.hash = '/' + urlObj.search
+          urlObj.search = ''
+        }
+
+        return urlObj.toString()
+      }
 
       // Parse current URL query parameters
       function parseCurrentQueryParams() {
@@ -473,6 +522,7 @@
         keyInput.value = ''
         valueInput.value = ''
         renderQueryTable()
+        updateUrlPreviews()
       }
 
       // Edit query parameter
@@ -490,6 +540,7 @@
         queryParams.delete(key)
         queryParams.set(newKey.trim(), newValue.trim())
         renderQueryTable()
+        updateUrlPreviews()
       }
 
       // Delete query parameter
@@ -500,6 +551,7 @@
         if (confirm(`Delete parameter "${key}"?`)) {
           queryParams.delete(key)
           renderQueryTable()
+          updateUrlPreviews()
         }
       }
 
